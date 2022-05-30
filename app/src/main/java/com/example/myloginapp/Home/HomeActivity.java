@@ -75,6 +75,7 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 }
                 case R.id.tab_map: {
+                    launchMapActivity();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.home_ly, new MapFragment())
                             .commit();
@@ -120,6 +121,9 @@ public class HomeActivity extends AppCompatActivity {
 
             return false;
         }
+    }
+
+    private void launchMapActivity() {
     }
 
     private void launchCameraActivity() {
@@ -184,7 +188,8 @@ public class HomeActivity extends AppCompatActivity {
                 int count;
                 for (GalleryInfo i:Object.art) {
                     count = SearchController.compareFeature(i.getImage(), Bitimg);
-                    Log.d("art",Integer.toString(count));
+                    if(count!=0)
+                        Log.d("art",i.getName());
                 }
                 break;
 
