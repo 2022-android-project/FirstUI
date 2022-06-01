@@ -33,7 +33,7 @@ public class ExhibitionViewAdapter extends RecyclerView.Adapter<ExhibitionViewAd
         Holder featuredViewHolder = new Holder(view);
         return featuredViewHolder;
     }
-/**/
+    /**/
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         holder.image.setImageBitmap(Object.art.get(position).getImage());

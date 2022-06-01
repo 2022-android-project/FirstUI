@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myloginapp.HelperClasses.Adapter.ExhibitionViewAdapter;
 import com.example.myloginapp.HelperClasses.Adapter.ReviewAdapter;
 import com.example.myloginapp.R;
+import com.example.myloginapp.Object;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,11 +33,12 @@ public class UserFragment extends Fragment {
     private TextView textView1;
     private TextView textView2;
     private ImageView imageView;
+    private ImageButton subscribeButton;
 
     private RecyclerView featuredRecycler;
     private RecyclerView featuredRecycler2;
 
-    private ExhibitionViewAdapter adapter;
+    private SubscribeViewAdapter adapter;
 
     private ReviewAdapter adapter2;
 
@@ -82,6 +85,7 @@ public class UserFragment extends Fragment {
         imageView =  (ImageView) rootView.findViewById(R.id.profile_image);
         textView1 = (TextView) rootView.findViewById(R.id.profile_id);
         textView2 = (TextView) rootView.findViewById(R.id.profile_message);
+        subscribeButton=(ImageButton) rootView.findViewById(R.id.subscribeButton);
 
         featuredRecycler = (RecyclerView) rootView.findViewById(R.id.featured_recycler);
         featuredRecycler2 = (RecyclerView) rootView.findViewById(R.id.featured_recycler2);
@@ -89,7 +93,7 @@ public class UserFragment extends Fragment {
         featuredRecycler.setHasFixedSize(true);
         featuredRecycler2.setHasFixedSize(true);
 
-        adapter = new ExhibitionViewAdapter();
+        adapter = new SubscribeViewAdapter();
         adapter2 = new ReviewAdapter();
 
         featuredRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
@@ -100,8 +104,16 @@ public class UserFragment extends Fragment {
 
 
         imageView.setImageResource(R.drawable.profile);
-        textView1.setText("test id");
-        textView2.setText("test message");
+        textView1.setText(Object.user.getId());
+        textView2.setText(Object.user.getEmail());
+
+
+        subscribeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("hello","world");
+            }
+        });
 
         Log.e("Frag", "마이페이지 recycler");
         return rootView;
